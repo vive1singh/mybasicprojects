@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Chit Bowl Game</title>  
+        <link rel="stylesheet" href="chitgame.css" />
+      
+    </head>
+    <body>
+        <!-- Setup Screen Where Chits and setting and teams Tags Available -->
+         <div id="setup-screen">
+            <h1> Chit Bowl Setup</h1>
+
+            <div class="section" id="teams-section">
+                <h2>Teams</h2>
+                <input id="team-input" placeholder="Team name" />
+                <button id="add-team-btn">Add Team</button>
+                <ul id="team-list"></ul>     
+            </div>
+
+            <div class="section" id="chits-section">
+                <h2>Chits</h2>
+            <input id="chit-text-input" placeholder="Chit text"/>
+            <input id="chit-score-input" type="number" placeholder="Score (optional in fixed Mode) " />
+            <button id="add-chit-btn">Add Chit</button>
+            <ul id="chit-list"></ul>
+            </div>
+        <div class="section" id="settings-section">
+            <h2> Game Settings </h2>
+
+                <label for="mode-select">Mode</label>
+                <select id="mode-select">
+                    <option value="per-chit"> Per-chit score(Use Chits Count Score) </option>
+                    <option value="fixed"> Fixed Score </option>
+                    <option value="penalty"> penalty Chits Allowed (That will Give Negative Score) </option>
+            </select>
+            
+            <label for="fixed-score-input">Fixed Score Value (The Fixed Mode give you Fixed Score ) </label>
+            <input id="fixed-score-input" type="number" placeholder="Default: 10" />
+
+        </div>
+
+        <button id="start-game-btn">Start Game</button>
+         </div>
+
+         <!-- Game Screen Where Its Shows Playing, ScoreBoard , History -->
+          <div id="game-screen" style="display: none;">
+            <h1> Chit Bowl Game</h1>
+
+         <div class="section" id="current-team-section">
+  <h2>Current Team: <span id="current-team-name"></span></h2>
+  <button id="pick-chit-btn">Pick Chit</button>
+  <button id="end-game-btn">End Game</button>
+
+    <div id="bowl">
+        <div class="bowl-inner">
+         <div class="bowl-slip-mini"></div>
+        <div class="bowl-slip-mini"></div>
+        <div class="bowl-slip-mini"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Picked chit shown as paper slip -->
+  <div id="picked-chit">
+    <p id="picked-chit-text">No Chit Yet Picked</p>
+    <p id="picked-chit-score"></p>
+
+        <!-- Blur overlay + reveal Button -->
+         <div id="chit-overlay">
+            <p id="chit-overlay-text">Tap to reveal chit</p>
+            <button id="reveal-chit-btn">Reveal Chit</button>
+         </div>
+        </div>    
+            <!-- Fun Random Message -->
+        <p id="fun-message"></p>
+    </div>
+
+
+        <div class="section" id="scoreboard-section">
+            <h2> Scoreboard </h2>
+            <div id="scoreboard"></div>
+        </div>
+
+        <div class="section" id="history-section">
+            <h2> History </h2>
+            <div id="history"></div>
+        </div>
+        <button id="reset-game-btn"> Reset Game </button>
+          </div>
+          <!-- Winner Model -->
+           <dialog id="winner-model">
+            <h2>Game Over!</h2>
+            <p id="winner-text"></p>
+            <button id="new-round-btn">New Round</button>
+            <button id="close-model-btn">Close</button>
+           </dialog>
+
+           <script src="chitgame.js"></script>
+    </body>
+</html>
