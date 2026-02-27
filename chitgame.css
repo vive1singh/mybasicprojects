@@ -1,0 +1,379 @@
+/* Basic Reset / defaults */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #0f172a 0, #020617 60%);
+  color: #f9fafb;
+  padding: 20px;
+}
+
+/* Headings */
+h1,
+h2 {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* Main Container where our setup and game screen starts */
+#setup-screen,
+#game-screen {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background: transparent;
+  border-radius: 10px;
+}
+
+/* Labels, inputs, selects */
+label {
+  display: block;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #4b5563;
+  background: rgba(15, 23, 42, 0.9);
+  color: #f9fafb;
+}
+
+/* Buttons Effects */
+button {
+  padding: 8px 16px;
+  margin: 5px 5px 5px 0;
+  cursor: pointer;
+  background: #22c55e;
+  color: #101010;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: transform 0.1s ease, background 0.2s ease;
+}
+
+button:hover {
+  background: #16a34a;
+}
+
+button:active {
+  transform: scale(0.96) translateY(1px);
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 8px;
+}
+
+/* Current team section */
+#current-team-section {
+  text-align: center;
+}
+
+/* Bowl Container */
+#bowl-area {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+}
+
+/* Bowl Shape */
+#bowl {
+  position: relative;
+  width: 260px;
+  height: 120px;
+  margin-top: 6px;
+}
+
+/* Bowl outer body */
+#bowl::before {
+  content: "";
+  position: absolute;
+  inset: 15px 0 0 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 0%,
+    #64748b44 0,
+    #020617ee 70%
+  );
+  border-radius: 50% 50% 40% 40%;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7);
+}
+
+/* Bowl rim (top ellipse) */
+#bowl::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110%;
+  height: 40px;
+  background: radial-gradient(
+    circle at 50% 40%,
+    #e5f0ffcc 0,
+    #94a3b888 40%,
+    transparent 80%
+  );
+  border-radius: 50%;
+}
+
+/* Inner area where slips sit */
+.bowl-inner {
+  position: absolute;
+  inset: 35px 30px 25px 30px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 0%,
+    #111827aa 0,
+    #000000ee 80%
+  );
+  overflow: hidden;
+}
+
+/* Mini slips inside transparent bowl */
+.bowl-slip-mini {
+  position: absolute;
+  width: 60px;
+  height: 16px;
+  background: #fffaf0;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+  opacity: 0.9;
+  animation: miniSlipFloat 3s ease-in-out infinite alternate;
+}
+
+@keyframes miniSlipFloat {
+  0% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  100% {
+    transform: translateY(-6px) rotate(3deg);
+  }
+}
+
+/* Different positions for slips */
+.bowl-slip-mini:nth-child(1) {
+  top: 14px;
+  left: 15px;
+  animation-delay: 0s;
+}
+.bowl-slip-mini:nth-child(2) {
+  top: 26px;
+  left: 80px;
+  animation-delay: 0.5s;
+}
+.bowl-slip-mini:nth-child(3) {
+  top: 20px;
+  left: 145px;
+  animation-delay: 1s;
+}
+
+/* Picked Chit With Paper Slip Look */
+#picked-chit {
+  margin-top: 16px;
+  padding: 16px 20px;
+  border-radius: 6px;
+  background: #fffaf0;
+  color: #111827;
+  text-align: center;
+  display: inline-block;
+  min-width: 220px;
+  max-width: 90%;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+  transform-origin: center bottom;
+  position: relative;
+}
+
+#picked-chit-text {
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+#picked-chit-score {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* Score color classes for chit */
+.chit-positive #picked-chit-score {
+  color: #16a34a;
+}
+
+.chit-zero #picked-chit-score {
+  color: #6b7280;
+}
+
+.chit-negative #picked-chit-score {
+  color: #ef4444;
+}
+
+/* fake shadow under the picked slip */
+#picked-chit::after {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 12px;
+  margin: 8px auto 0;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.55), transparent 60%);
+  filter: blur(3px);
+  opacity: 0.7;
+}
+
+/* Slip reveal overlay (blur + button) */
+#chit-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: none; /* default: hidden, JS se show */
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#chit-overlay-text {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+/* Fun random message text */
+#fun-message {
+  margin-top: 10px;
+  min-height: 20px;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+
+/* Score Cards */
+#scoreboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.score-card {
+  flex: 1 1 140px;
+  border-radius: 8px;
+  border: 1px solid #4b5563;
+  padding: 10px;
+  text-align: center;
+  background: rgba(15, 23, 42, 0.9);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.score-card .team-name {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.score-card .team-score {
+  font-size: 1.4rem;
+}
+
+/* leading team highlight */
+.score-card.leading {
+  border-color: #22c55e;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+}
+
+/* score update flash */
+.score-card.score-update {
+  animation: scoreFlash 0.4s ease-out;
+}
+
+@keyframes scoreFlash {
+  0% {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.6);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+}
+
+/* history container */
+#history {
+  font-size: 0.9rem;
+}
+
+/* slip comes out + reveal animation */
+.highlight-animation {
+  animation: chitReveal 0.8s ease-out;
+}
+
+@keyframes chitReveal {
+  0% {
+    transform: translateY(30px) scale(0.7) rotate(-8deg);
+    opacity: 0;
+  }
+  40% {
+    transform: translateY(-10px) scale(1.05) rotate(3deg);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(4px) scale(0.98) rotate(-1deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Dialog / winner model styling */
+dialog {
+  border: none;
+  border-radius: 10px;
+  padding: 20px 24px;
+  max-width: 320px;
+  width: 90%;
+  background: #020617;
+  color: #f9fafb;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+dialog h2 {
+  margin-bottom: 8px;
+}
+
+#winner-text {
+  margin: 10px 0 16px 0;
+  text-align: center;
+}
+
+dialog button {
+  width: 48%;
+}
+
+/* Responsive layout: Teams & Chits side by side on larger screen */
+@media (min-width: 700px) {
+  #teams-section,
+  #chits-section {
+    display: inline-block;
+    vertical-align: top;
+    width: 48%;
+  }
+}

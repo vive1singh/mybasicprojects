@@ -1,0 +1,188 @@
+/* Overall page layout : */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f0f2f5;
+    margin: 0%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.ludo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Main Board Layout : */
+#ludo-board {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    width: 500px;
+    height: 500px;
+    border: 5px solid #333;
+    background: white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* $ corners Layout */
+.board {
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#red-board {grid-column: 1 / span 6; grid-row: 1 / span 6; background: #ff4d4d;}
+#yellow-board {grid-column: 10 / span 6; grid-row: 1 / span 6; background: #ffeb3b;}
+#green-board {grid-column: 1 / span 6; grid-row: 10 / span 6; background: #4caf50;}
+#blue-board {grid-column: 10 / span 6; grid-row: 10 / span 6; background: #2196f3;}
+
+/* Home Pieces Layout  */
+.home-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 70%;
+    height: 70%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.home-slot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Win Zone Layout : */
+
+#win-zone {
+    grid-column: 7 / span 3;
+    grid-row: 7 / span 3;
+    border: 2px solid #333;
+    background:
+        linear-gradient(45deg, #ff4d4d 50%, transparent 50%),
+        linear-gradient(-45deg, #2196f3 50%, transparent 50%),
+        linear-gradient(135deg, #4caf50 50%, transparent 50%),
+        linear-gradient(-135deg, #ffeb3b 50%, transparent 50%);
+    background-position: left top, right bottom, left bottom, right top;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    z-index: 5;
+}
+
+/* Path Layout */
+.path {
+    display: grid;
+    background: #fff;
+}
+
+/* Horizontal Path layouut for Red and bLue */
+#red-path {
+    grid-column: 1 / span 6;
+    grid-row: 7 / span 3;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+#blue-path {
+    grid-column: 10 / span 6;
+    grid-row: 7 / span 3;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+/* Vertical Path Layout for Green and Yellow */ 
+#yellow-path {
+    grid-column: 7 / span 3;
+    grid-row: 1 / span 6;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+#green-path {
+    grid-column: 7 / span 3;
+    grid-row: 10 / span 6;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+/* Individual box path layout : */
+.ludo-box {
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: white;
+}
+
+.ludo-box.safe {
+    background: #fff9c4;
+}
+
+.safe-star {
+    color: #fbc02d;
+    font-size: 1rem;
+    opacity: 0.6;
+}
+
+/* Pieces Styling layout : */
+.fa-circle {
+    font-size: 1.8rem;
+    cursor: pointer;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    transition: transform 0.1s;
+}
+
+.fa-circle:hover { transform: scale(1.1); }
+
+.red-piece i {color: #d32f2f; }
+.blue-piece i { color: #1976d2; }
+.green-piece i { color: #388e3c; }
+.yellow-piece i { color: #fbc02d; }
+
+/* Dice Control Layout : */
+.game-controls {
+    text-align: center;
+}
+
+#dice-face {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#roll-dice-btn {
+    padding: 10px 25px;
+    font-size: 1rem;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Winner Overlay Layout : */
+
+.winner-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.winner-box {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+}

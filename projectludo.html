@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<title> Ludo Game | Js + Bot</title>
+
+    <!-- Fonts  For Ludo Pices-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Css File Designing  -->
+    <link rel="stylesheet" href="projectludo.css" />
+    </head>
+    <body>
+        <!-- There will Be present Board Container -->
+         <div  class="ludo-container">
+            <!-- Ludo Board  -->
+            <div id ="ludo-board">
+                <!-- there Will Be present paths and win zone  -->
+                 <!-- Red House  -->
+                  <div id = "red-board" class ="board">
+                    <!-- there will be present 2x2 grid where present 4 ludo pieces -->
+                     <div class = "home-box">
+                        <span class ="home-slot red-piece" data-color="red"><i class="fa-solid fa-circle"></i></span>
+                        <span class ="home-slot red-piece" data-color="red"> <i class="fa-solid fa-circle"></i></span>
+                        <span class ="home-slot red-piece"data-color="red"> <i class="fa-solid fa-circle"></i></span>
+                        <span class ="home-slot red-piece" data-color="red"> <i class="fa-solid fa-circle"></i></span>
+                     </div>
+                  </div>
+                  <!-- Blue house -->
+                   <div id = "blue-board" class ="board">
+                    <div class ="home-box">
+                        <span class ="home-slot blue-piece"data-color="blue"> <i class="fa-solid fa-circle"></i></span>
+                        <span class ="home-slot blue-piece" data-color="blue"> <i class="fa-solid fa-circle"></i></span>
+                        <span class ="home-slot blue-piece" data-color="blue"> <i class="fa-solid fa-circle"></i></span>
+                        <span class ="home-slot blue-piece" data-color="blue"> <i class="fa-solid fa-circle"></i></span>
+                    </div>
+                   </div>
+                   <!-- Green house -->
+                   <div id = "green-board" class ="board">
+                    <div class ="home-box">
+                        <span class ="home-slot green-piece" data-color="green"> <i class="fa-solid fa-circle"></i></span>
+                        <span class ="home-slot green-piece" data-color="green"> <i class="fa-solid fa-circle"></i></span>
+                        <span class ="home-slot green-piece" data-color="green"> <i class="fa-solid fa-circle"></i></span>
+                        <span class ="home-slot green-piece" data-color="green"> <i class="fa-solid fa-circle"></i></span>
+                    </div>
+                   </div>
+                   <!-- yellow house -->
+                   <div id = "yellow-board" class ="board">
+                    <div class ="home-box">
+                        <span class ="home-slot yellow-piece" data-color="yellow"> <i class="fa-solid fa-circle"></i></span>
+                        <span class ="home-slot yellow-piece" data-color="yellow"> <i class="fa-solid fa-circle"></i></span>
+                        <span class ="home-slot yellow-piece" data-color="yellow"> <i class="fa-solid fa-circle"></i></span>
+                        <span class ="home-slot yellow-piece" data-color="yellow"> <i class="fa-solid fa-circle"></i></span>
+                    </div>
+                   </div>
+                   <!-- Center Win Zone  -->
+                    <div id ="win-zone"></div>
+                    <!--Path For Pieces  -->
+                    <!-- Red Path -->
+                     <div id = "red-path" class ="path">
+                     <div class ="ludo-box safe" data-red-index="0"><i class="fa-solid fa-star safe-star"></i></div>
+                        <!-- 18 boxes -->
+                         <div class ="ludo-box" data-red-index="1"></div>
+                         <div class ="ludo-box" data-red-index="2"></div>
+                         <div class ="ludo-box" data-red-index="3"></div>
+                         <div class ="ludo-box" data-red-index="4"></div>
+                         <div class ="ludo-box" data-red-index="5"></div>
+                         <div class ="ludo-box" data-red-index="6"></div>
+                         <div class ="ludo-box" data-red-index="7"></div>
+                         <div class ="ludo-box safe" data-red-index="8"><i class="fa-solid fa-star safe-star"></i></div>
+                         <div class ="ludo-box" data-red-index="9"></div>
+                         <div class ="ludo-box" data-red-index="10"></div>
+                         <div class ="ludo-box" data-red-index="11"></div>
+                         <div class ="ludo-box" data-red-index="12"></div>
+                         <div class ="ludo-box safe" data-red-index="13"><i class="fa-solid fa-star safe-star"></i></div>
+                         <div class ="ludo-box safe" data-red-index="14"></div>
+                         <div class ="ludo-box safe" data-red-index="15"></div>
+                         <div class ="ludo-box safe" data-red-index="16"></div>
+                         <div class ="ludo-box safe" data-red-index="17"></div>
+                     </div>
+                     <!-- green Path -->
+                     <div id = "green-path" class ="path">
+                     <div class ="ludo-box safe" data-green-index="0"><i class="fa-solid fa-star safe-star"></i></div>
+                         <!-- 18 boxes -->
+                         <div class ="ludo-box" data-green-index="1"></div>
+                         <div class ="ludo-box" data-green-index="2"></div>
+                         <div class ="ludo-box" data-green-index="3"></div>
+                         <div class ="ludo-box" data-green-index="4"></div>
+                         <div class ="ludo-box" data-green-index="5"></div>
+                         <div class ="ludo-box" data-green-index="6"></div>
+                         <div class ="ludo-box" data-green-index="7"></div>
+                         <div class ="ludo-box safe" data-green-index="8"><i class="fa-solid fa-star safe-star"></i></div>
+                         <div class ="ludo-box" data-green-index="9"></div>
+                         <div class ="ludo-box" data-green-index="10"></div>
+                         <div class ="ludo-box" data-green-index="11"></div>
+                         <div class ="ludo-box" data-green-index="12"></div>
+                         <div class ="ludo-box safe" data-green-index="13"><i class="fa-solid fa-star safe-star"></i></div>
+                         <div class ="ludo-box safe" data-green-index="14"></div>
+                         <div class ="ludo-box safe" data-green-index="15"></div>
+                         <div class ="ludo-box safe" data-green-index="16"></div>
+                         <div class ="ludo-box safe" data-green-index="17"></div>
+                     </div>
+                     <!-- blue Path -->
+                     <div id = "blue-path" class ="path">
+                        <div class ="ludo-box safe" data-blue-index="0"><i class="fa-solid fa-star safe-star"></i></div>
+                        <!-- 18 boxes -->
+                         <div class ="ludo-box" data-blue-index="1"></div>
+                         <div class ="ludo-box" data-blue-index="2"></div>
+                         <div class ="ludo-box" data-blue-index="3"></div>
+                         <div class ="ludo-box" data-blue-index="4"></div>
+                         <div class ="ludo-box" data-blue-index="5"></div>
+                         <div class ="ludo-box" data-blue-index="6"></div>
+                         <div class ="ludo-box" data-blue-index="7"></div>
+                         <div class ="ludo-box safe" data-blue-index="8"><i class="fa-solid fa-star safe-star"></i></div>
+                         <div class ="ludo-box" data-blue-index="9"></div>
+                         <div class ="ludo-box" data-blue-index="10"></div>
+                         <div class ="ludo-box" data-blue-index="11"></div>
+                         <div class ="ludo-box" data-blue-index="12"></div>
+                         <div class ="ludo-box safe" data-blue-index="13"><i class="fa-solid fa-star safe-star"></i></div>
+                         <div class ="ludo-box safe" data-blue-index="14"></div>
+                         <div class ="ludo-box safe" data-blue-index="15"></div>
+                         <div class ="ludo-box safe" data-blue-index="16"></div>
+                         <div class ="ludo-box safe" data-blue-index="17"></div>
+                     </div>
+                     <!-- yellow Path -->
+                     <div id = "yellow-path" class ="path">
+                        <div class ="ludo-box safe" data-yellow-index="0"><i class="fa-solid fa-star safe-star"></i></div>
+                        <!-- 18 boxes -->
+                         <div class ="ludo-box" data-yellow-index="1"></div>
+                         <div class ="ludo-box" data-yellow-index="2"></div>
+                         <div class ="ludo-box" data-yellow-index="3"></div>
+                         <div class ="ludo-box" data-yellow-index="4"></div>
+                         <div class ="ludo-box" data-yellow-index="5"></div>
+                         <div class ="ludo-box" data-yellow-index="6"></div>
+                         <div class ="ludo-box" data-yellow-index="7"></div>
+                         <div class ="ludo-box safe" data-yellow-index="8"><i class="fa-solid fa-star safe-star"></i></div>
+                         <div class ="ludo-box" data-yellow-index="9"></div>
+                         <div class ="ludo-box" data-yellow-index="10"></div>
+                         <div class ="ludo-box" data-yellow-index="11"></div>
+                         <div class ="ludo-box" data-yellow-index="12"></div>
+                         <div class ="ludo-box safe" data-yellow-index="13"><i class="fa-solid fa-star safe-star"></i></div>
+                         <div class ="ludo-box safe" data-yellow-index="14"></div>
+                         <div class ="ludo-box safe" data-yellow-index="15"></div>
+                         <div class ="ludo-box safe" data-yellow-index="16"></div>
+                         <div class ="ludo-box safe" data-yellow-index="17"></div>
+                     </div>
+                    </div>
+
+                    <!-- Game Controls Dice + info -->
+                     <div class="game-controls">
+                        <div class="dice-area">
+                           <div id="dice-face">
+                            <i id="dice-icon" class="fa-solid fa-dice-one"></i>
+                           </div>
+                            <button id="roll-dice-btn">Roll Dice</button>
+                            <p id="current-player-text">Current Player: red</p>
+                        </div>
+                    </div>
+                 </div> 
+                     <!-- Winner Modal -->
+                      <div id="declare-winner" class ="winner-overlay">
+                        <div class="winner-box">
+                            <h1 id ="winner-name"></h1>
+                            <button id ="play-again-btn">Play Again</button>
+                        </div>
+                      </div>
+
+         <script src="projectludo.js"></script>
+    </body>
+
+</html>
